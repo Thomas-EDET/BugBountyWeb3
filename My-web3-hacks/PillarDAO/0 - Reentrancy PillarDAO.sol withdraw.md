@@ -204,6 +204,7 @@ We successfully showed that the reentrancy could be exploited by creating our ow
 
 This means that our custom token allows the attack, because PillarDAO is making use of an  ERC20 token it's not possible.
 
+---
 
 ####  Bonus Why Fallback() is not possible here
 
