@@ -34,7 +34,7 @@ Once comfortable, I gradually expand to larger scopes and multi-contract systems
 ## 4. My Tips for Immunefi
 
 ### 4.0 Don't waste time to read everything
-- If you want, like me,  to focus on contracts just lock-in, and learn everything you can on solidity before moving on, don't waste time learning Immunefi classification system or how to report vulnerabilities because it's highly likely you will not find anything for your first 2 months, so lock-in learn as much as you can, experiment, create and once you the time comes write how to reports your vulnerabilities correctly.
+- If you want, like me,  to focus on contracts just lock-in, and learn everything you can on solidity before moving on, don't waste time learning Immunefi classification system or how to report vulnerabilities because it's highly likely you will not find anything for your first 2 months, so lock-in,learn as much as you can, experiment, create and once you the time comes learn how to report your vulnerabilities correctly to get the best reward  possible.
 
 ### 4.1 Know the Rules  
 - **Read the program policy** carefully. Every bounty has its own “allowed vs. disallowed” actions.  
