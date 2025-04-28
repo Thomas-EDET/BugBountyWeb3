@@ -23,7 +23,7 @@ As we can see token.safeTransfer is called before updating state variables not f
 ![withdraw-exploitation-impediment](https://github.com/user-attachments/assets/a108a01f-fddb-4ba5-8895-c8d3d42d0656)
 
 
-We can  see I withdraw Reentrance flag from the function to allow the exploitation. Also I removed membershipNFT.burn statement which block the reentrancy. <br><br>
+We can see I withdrew Reentrance flag from the function to allow the exploitation. Also I removed membershipNFT.burn statement which block the reentrancy. <br><br>
 The test is successfully demonstrating the reentrancy vulnerability up to the point where the MembershipNFT logic reverts (because it tries to burn an already-burned NFT on the second reentrant call).
 - On the first withdraw(), the NFT is burned and state is set to zero.<br>
 - On the reentrant call, the contract tries to burn the same NFT again, but it no longer exists, so OpenZeppelin's ERC721 reverts with owner query for nonexistent token.
