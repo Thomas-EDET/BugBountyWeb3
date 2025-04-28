@@ -2,13 +2,13 @@
 
 ## 1. Why Immunefi?
 
-I've chosen **Immunefi** because they are the **biggest platform** specializing in **Web3 bug bounties**.  
+They didn't pay me to say that but: I've chosen **Immunefi** because they are the **biggest platform** specializing in **Web3 bug bounties**.  
 The rewards are attractive, and their **Vaults system** provides assurance: companies lock funds upfront to show they are serious about paying hunters who find vulnerabilities.  
 This makes the ecosystem much more trustworthy for security researchers.
 
 ---
 
-## 2. Onboarding
+## 2. Onboarding pro tips
 
 Getting started on Immunefi was very simple:  
 - Created an account with basic information  
@@ -32,6 +32,9 @@ Once comfortable, I gradually expand to larger scopes and multi-contract systems
 ---
 
 ## 4. My Tips for Immunefi
+
+### 4.0 Don't waste time to read everything
+- If you want, like me,  to focus on contracts just lock-in, and learn everything you can on solidity before moving on, don't waste time learning Immunefi classification system or how to report vulnerabilities because it's highly likely you will not find anything for your first 2 months, so lock-in learn as much as you can, experiment, create and once you the time comes write how to reports your vulnerabilities correctly.
 
 ### 4.1 Know the Rules  
 - **Read the program policy** carefully. Every bounty has its own “allowed vs. disallowed” actions.  
