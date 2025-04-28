@@ -1,4 +1,4 @@
-Reentrancy attack on PillarDAO.sol contract.
+Cross-function Reentrancy attack on PillarDAO.sol contract.
 
 Deposit() exploitation:
 
@@ -22,6 +22,8 @@ memberships[msg.sender] = membershipNFT.mint(msg.sender);
 
 
 #### Attack flow for MembershipNFT.mint:
+I decided to chose membershipNFT.mint() only because I already exploited safeTransfer function in the withdraw() function earlier. I like changes.
+
 ![flow-deposit](https://github.com/user-attachments/assets/92096224-6b46-4053-af02-9c1fdb2aa33e)
 
 
@@ -117,9 +119,12 @@ if we had something like this : function vote(uint proposalId, bool support) ext
     // Count vote...
 }
 
-We could've exploited this function allowing potentially one member to vote two times: One time during the reentrancy attack and potentially another time after submitting his token, needed to complete the membership enrollment.
+**We could've exploited this function allowing potentially one member to vote two times: One time during the cross function reentrancy attack and potentially another time after submitting our token, that is  needed to complete the membership enrollment. In practice, this means the contract has a vulnerability that's waiting for the right conditions (like a new vote function being added) to become exploitable.**
 
-Later on I tried to  call withdraw() in our callback but I forgot it would obviously not worked as :
+
+#### Bonus
+
+Later on I tried to call withdraw() in our callback but I forgot it would obviously not worked as :
 balances[attacker].depositAmount is still 0 (since state are not updated)
 And balances[attacker].depositTime is not set yet as to withdraw a user need to  wait  52 weeks.
 
