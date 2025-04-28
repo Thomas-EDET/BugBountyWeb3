@@ -1,5 +1,8 @@
 Cross-function Reentrancy attack on PillarDAO.sol contract.
 
+Conclusion:**We could've exploited this function allowing potentially one member to vote two times: One time during the cross function reentrancy attack and potentially another time after submitting our token, that is  needed to complete the membership enrollment. In practice, this means the contract has a vulnerability that's waiting for the right conditions (like a new vote function being added) to become exploitable.**
+
+
 Deposit() exploitation:
 
 ![deposit-function](https://github.com/user-attachments/assets/c7d02549-486e-4836-9901-53deee5448d7)
