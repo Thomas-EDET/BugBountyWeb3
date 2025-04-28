@@ -2,6 +2,8 @@
 
 This is my first real world finding in smart contracts hacking.
 
+A reentrancy attack occurs when a contract’s function makes an external call before updating its own state, allowing a malicious contract to recursively invoke that function and manipulate state or drain funds before the first invocation completes
+
 
 ### 1 - Introduction
 
