@@ -208,7 +208,7 @@ This means that our custom token allows the attack, because PillarDAO is making 
 
 ####  Bonus Why Fallback() is not possible here
 
-- In a standard reentrancy attack using fallback():
+In a standard reentrancy attack using fallback():
 - A vulnerable contract sends ETH to an attacker contract
 - The attacker contract's fallback() or receive() function is triggered
 - This function then calls back into the vulnerable contract before state is updated
