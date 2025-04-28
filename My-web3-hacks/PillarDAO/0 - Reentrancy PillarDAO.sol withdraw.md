@@ -132,7 +132,7 @@ contract ReentrancyAttacker {
 }
 ```
 
-### 3.3 the test function
+#### 3.3 the test function
 
 ```solidity
 function testWithdrawReentrancyExploit() public {
@@ -194,7 +194,7 @@ function testWithdrawReentrancyExploit() public {
     attacker.drain();
 }
 ```
-####  3.4 - results
+####  3.4 - Results
 We can see using an amount  of 10000 eth, the attacker drained 40000 ethers on total.
 
 ![withdraw-reentrancy-exploit](https://github.com/user-attachments/assets/f693e49a-863f-482b-9b9d-59b9be3744be)
