@@ -1,9 +1,9 @@
-Cross-function Reentrancy attack on PillarDAO.sol contract.
+# Cross-function Reentrancy attack on PillarDAO.sol contract.
 
-Conclusion:**We could've exploited this function allowing potentially one member to vote two times: One time during the cross function reentrancy attack and potentially another time after submitting our token, that is  needed to complete the membership enrollment. In practice, this means the contract has a vulnerability that's waiting for the right conditions (like a new vote function being added) to become exploitable.**
+Conclusion: **We could've exploited this function allowing potentially one member to vote two times: One time during the cross function reentrancy attack and potentially another time after submitting our token, that is  needed to complete the membership enrollment. In practice, this means the contract has a vulnerability that's waiting for the right conditions (like a new vote function being added) to become exploitable.**
 
 
-Deposit() exploitation:
+### 1 - Deposit() vulnerability:
 
 ![deposit-function](https://github.com/user-attachments/assets/c7d02549-486e-4836-9901-53deee5448d7)
 
@@ -16,22 +16,22 @@ Token.safeTransferFrom is called before making the changes which are:<br>
 Potential impact:
 The attacker could've potentially mint multiple NFTs with only one deposit. This would be a form of duplication exploit where they get multiple membership NFTs for the price of one.
 
-### Exploitation
+### 2 - Exploitation
 
-#### Entry point:<br> 
+#### 2.1 - Entry point:<br> 
 Slither found 2 external calls that can be used for reentrancy attack<br> 
 token.safeTransferFrom(msg.sender, address(this), _amount);
 memberships[msg.sender] = membershipNFT.mint(msg.sender);
 
 
-#### Attack flow for MembershipNFT.mint:
+#### 2.2 -Attack flow for MembershipNFT.mint:
 I decided to chose membershipNFT.mint() only because I already exploited safeTransfer function in the withdraw() function earlier. I like changes.
 
 ![flow-deposit](https://github.com/user-attachments/assets/92096224-6b46-4053-af02-9c1fdb2aa33e)
 
 
 
-#### Technical analysis:
+### 3 - Technical analysis:
 membershipNFT.mint(msg.sender); is making use of mint a function  from membershipNFT from membershipNFT.sol:
 
 `function mint(`<br> 
@@ -96,7 +96,7 @@ We can see two functions with the same name _safeMint, when people  call the fir
 `}`<br> 
 `}`<br> 
 
-We can see that it tries to fetch on ERC721Received() if the recipient is a contract. This function need to be created by us so this is our callback. Because of that we can trigger other vulnerable function from PillarDAO.sol at least it's what I believed.
+We can see that it tries to fetch on ERC721Received() if the recipient is a contract. This function needs to be created by us so it will be our callback. Because of that we can trigger other vulnerable function from PillarDAO.sol.
 
 #### Proof Of Concept
 
@@ -112,7 +112,7 @@ After running our test obviously the comparison we made is false as OnERC721Rece
 ![test-run-deposit-reentrancy](https://github.com/user-attachments/assets/9a843d5b-1367-494f-9748-3e6b27215b42)
 
 
-#### Conclusion
+### 4 - Conclusion
 
 We proved that reentrancy worked as during the callback we can see the deposit is not made but we got a membership ! This is because state variables are updated after the interaction  and not before, this is not respecting the Check-Effect-Interaction principle.
 
