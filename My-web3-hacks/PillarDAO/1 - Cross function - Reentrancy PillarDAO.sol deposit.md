@@ -125,6 +125,10 @@ if we had something like this : function vote(uint proposalId, bool support) ext
 **We could've exploited this function allowing potentially one member to vote two times: One time during the cross function reentrancy attack and potentially another time after submitting our token, that is  needed to complete the membership enrollment. In practice, this means the contract has a vulnerability that's waiting for the right conditions (like a new vote function being added) to become exploitable.**
 
 
+
+
+--- 
+
 #### Bonus
 
 Later on I tried to call withdraw() in our callback but I forgot it would obviously not worked as :
