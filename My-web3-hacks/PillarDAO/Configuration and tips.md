@@ -25,4 +25,16 @@ optimizer_runs = 10000
 slither src/MembershipNFT.sol --foundry-ignore-compile
 -> You might have error regarding compilation,  if  you double checks that it's not relevant you can skip them using --foundry-ignore-compile flag.
 
+### 4 - Quickly understanding what is doing what:
+PillarDAO.sol -> The main DAO contract <br>
+MembershipNFT.sol ->The NFT contract for membership tokens <br>
+
+This appears to be a long-term commitment DAO where:<br><br>
+Members must make a financial commitment to join<br>
+The one-year lock period ensures members are invested in the DAO's success<br>
+The NFT provides a verifiable proof of membership<br>
+The system could be used for governance, exclusive access, or shared benefits<br>
+The combination of staking and NFT membership creates a dual verification system where both token commitment and membership status can be verified independently.<br>
+
+
 Happy hacking.
