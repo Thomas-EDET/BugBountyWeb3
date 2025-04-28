@@ -2,6 +2,8 @@
 
 A cross-function reentrancy attack arises when one function in a contract calls out (e.g., sends Ether or tokens) before updating shared state, and the attacker’s fallback or callback then invokes a different function in the same contract—one that also relies on that shared state—thereby bypassing single-function guards and enabling theft or logic corruption.
 
+---
+
 Conclusion: **We could've exploited this function allowing potentially one member to vote two times: One time during the cross function reentrancy attack and potentially another time after submitting our token, that is  needed to complete the membership enrollment. In practice, this means the contract has a vulnerability that's waiting for the right conditions (like a new vote function being added) to become exploitable.**
 
 
