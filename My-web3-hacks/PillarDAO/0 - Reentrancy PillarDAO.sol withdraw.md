@@ -4,9 +4,11 @@ This is my first real world finding in smart contracts hacking.
 
 A reentrancy attack occurs when a contract’s function makes an external call before updating its own state, allowing a malicious contract to recursively invoke that function and manipulate state or drain funds before the first invocation completes
 
-**Conclusion:We successfully showed that the reentrancy could be exploited by creating our own vector, since PillarDAO is using ERC20 token for stacking, we needed to deploy the contract with a custom token that allows Reentrancy.<br>
+---
 
-This means that our custom token allows the attack, because PillarDAO is making use of an ERC20 token it's not possible.**
+**Conclusion:  We successfully showed that the reentrancy could be exploited by creating our own vector, since PillarDAO is using ERC20 token for stacking, we needed to deploy the contract with a custom token that allows Reentrancy.**
+
+This means that our custom token allows the attack, because PillarDAO is making use of an ERC20 token it's not possible.
 
 
 ### 1 - Introduction
