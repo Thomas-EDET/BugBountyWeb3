@@ -20,7 +20,7 @@
 ### Phase 4: Advanced Analysis
 
 - **Symbolic execution with Mythril**: Deep path exploration
-- **Formal verification**: Mathematical proofs of correctness _(you didn't mention this)_
+- **Formal verification**: Mathematical proofs of correctness 
 
 ## Missing Important Elements
 
