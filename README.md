@@ -26,3 +26,7 @@ If you're interested in Web3 security, bug bounties, or smart contract auditing,
 
 Feel free to **watch** the repo to get updates!  
 If you are also hacking, building, or just curious — you're more than welcome to learn and grow alongside me.
+
+
+### Disclaimer
+Those are my personal notes, it might contain mistakes.
