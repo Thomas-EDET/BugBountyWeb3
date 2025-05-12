@@ -19,3 +19,5 @@ If you're just starting out, you might consider a simpler approach:
 3 -  AI is an amazing tool to help comprehend stuff, be very precise, even good models are limited in term of calculation power leading to imprecision.
 
 4 - When forking a chain, always specify a block number for reproducibility purposes. This is very important when submitting a BB Proof Of Concept. 
+
+5 - When Launching a bug bounty program and reading the documentation, note every statements that specifies a state. Later on you can use those statements in your testing.
