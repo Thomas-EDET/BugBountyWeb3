@@ -221,3 +221,17 @@ Stop Loss: 2000 (6550% of entry) shows that there is well an error in implementa
 ### references
 https://www.arbiscan.io/address/0x3890243a8fc091c626ed26c087a028b46bc9d66c?utm_source=immunefi#readProxyContract -> Check the maxNegativePnlOnOpenP set to 75%<br>
 https://ostium-labs.gitbook.io/ostium-docs/ostium-trading-engine/closing-trades#liquidation -> check the liquidation formula here.<br>
+
+
+---
+
+### Go further  - my discussion with Ostium
+Ostium answer:<br>
+A user farming the funding rate could be interested to set a sl lower than the liquidation price, knowing that the the liquidation price will move over time lower than the sl.
+
+But by reading the documentation:
+I found out that funding rate is only for crypto pairs: "the funding fee compensates for OI imbalances". RWA pairs are using a rollover fees which made my remark valid!
+
+See:https://ostium-labs.gitbook.io/ostium-docs/fee-breakdown#funding-rate-crypto-pairs
+
+
