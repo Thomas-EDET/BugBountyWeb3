@@ -1,3 +1,6 @@
+~I publicy disclose this vulnerability with the rights of Ostium. They have updated their code accordingly.
+
+
 ### Introduction:
 I was auditing Ostium a perp trading platform. 
 
