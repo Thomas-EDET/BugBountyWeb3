@@ -26,6 +26,8 @@ See the following screenshot and focus on the liquidation price.
 ### Impact detail:
 If the liquidation price is higher than the stop-loss, it means positions are being closed earlier than intended, causing traders to lose money before their risk limit is actually hit. This breaks trust in the platform’s risk controls and makes it hard for users to manage their trades properly—especially with high leverage.
 
+**[VERY IMPORTANT]-> It mostly impacts daily traders, daily traders are more likely to open trade with leverage > 20, which mean they are paying maker fees to the platform. If those traders found out that they are getting liquidated 10% before their stop loss, it's highly likely Ostium will loses revenue from them are they will just leave it.**
+
 ### Recommendation:
 To align with Ostium documentation I suggest Ostium: 1 - Set maxNegativePnlOnOpenP to 85 (and therefore review the math formula provided at https://ostium-labs.gitbook.io/ostium-docs/ostium-trading-engine/closing-trades) <br>
 OR 2 - Modify the frontend code to forbid the usage of stop loss = 85% accordingly to the liquidation trade formula.
