@@ -1,4 +1,4 @@
-~Was wondering what was happening behind infura calls.
+~Was wondering what is happening behind infura calls more in details.
 
 Ethereum exposes a **JSON-RPC API** over HTTP or WebSocket that lets clients invoke node operations remotely.
 
