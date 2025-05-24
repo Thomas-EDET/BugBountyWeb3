@@ -39,8 +39,8 @@ If the liquidation price is higher than the stop-loss, it means positions are be
 **[VERY IMPORTANT]-> It mostly impacts daily traders, daily traders are more likely to open trade with leverage > 20, which mean they are paying maker fees to the platform. If those traders found out that they are getting liquidated 10% before their stop loss, it's highly likely Ostium will loses revenue because the daily traders will flee the platform.**
 
 ### Recommendation:
-To align with Ostium documentation I suggest Ostium: 1 - Set maxNegativePnlOnOpenP to 85 (and therefore review the math formula provided at https://ostium-labs.gitbook.io/ostium-docs/ostium-trading-engine/closing-trades) <br>
-OR 2 - Modify the frontend code to forbid the usage of stop loss = 85% accordingly to the liquidation trade formula.
+To align with Ostium documentation I suggest Ostium: 1 - Set maxNegativePnlOnOpenP to 85 (and therefore review the math formula provided at https://ostium-labs.gitbook.io/ostium-docs/ostium-trading-engine/closing-trades) <br> [Difficult-clean]
+OR 2 - Modify the frontend code to forbid the usage of stop loss = 85% accordingly to the liquidation trade formula, but people can still interract with the not ameneded contract. [easy-dirty]
 
 ### PoC 1 - fetching the maxNegativePnlOnOpenP value.<br>
 The value of maxNegativePnlOnOpenP is the maximum negative PnL allowed, according to the frontend allowing traders to set a SL of -85%, this also should be set to 85.
