@@ -1,6 +1,6 @@
 # BugBountyWeb3 🛡️🚀
 
-Welcome to **BugBountyWeb3** — my personal space where I share my journey into the world of **Web3 security** and **smart contract hacking**. ~with a focus on AMM and trading platforms.
+Welcome to **BugBountyWeb3** — my personal space where I share my journey into the world of **Web3 security** and **smart contract hacking**. ~with a focus on AMMs and trading platforms.
 
 Here, you'll find:
 - 🧠 Tips and strategies for hacking smart contracts
