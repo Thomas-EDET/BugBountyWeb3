@@ -1,4 +1,4 @@
-# What I've Learned About the Bug Bounty World (So Far)
+# What I've Learned About the Bug Bounty World (So Far) - Focus on the BB ecosystem
 
 Over the past few months, I’ve been diving deep into the Web3 bug bounty space. Coming from six years of security auditing, I had certain expectations — but what I discovered was a bit more nuanced.
 
