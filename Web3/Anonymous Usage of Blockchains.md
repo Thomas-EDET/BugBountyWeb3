@@ -37,6 +37,8 @@ To sum up Monero features and the associated risks:
 | 🕵️ IP tracking to deanonymize sender                   | Dandelion++, Tor/I2P           |
 | 🧠 Re-identification from behavior (KYC, address reuse) | Stealth addresses + Good OPSEC |
 | 🧮 Amount analysis via known UTXO sizes                 | Bulletproof++ (range proofs)   |
+
+<br>
 Monero handles **half the battle** by protecting your transactions on-chain and over the network. But the other **50% is your OPSEC**. 
 
 # Problematic: The challenge for privacy on Ethereum
