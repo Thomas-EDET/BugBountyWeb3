@@ -224,3 +224,6 @@ Threats mitigated: Tooling telemetry (e.g., Forge/Ganache/Hardhat stats, auto-up
 
 Pro tips: You can integrate with Tor inside the container if needed, or **block all egress** entirely with `--network none`.
 
+---
+Thank you reading, star this project for further tips, I'm posting quite often !
+
