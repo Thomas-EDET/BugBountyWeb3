@@ -39,6 +39,7 @@ To sum up Monero features and the associated risks:
 | 🧮 Amount analysis via known UTXO sizes                 | Bulletproof++ (range proofs)   |
 
 <br>
+
 Monero handles **half the battle** by protecting your transactions on-chain and over the network. But the other **50% is your OPSEC**. 
 
 # Problematic: The challenge for privacy on Ethereum
