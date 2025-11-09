@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Understanding how to **sign and broadcast transactions manually** is a fundamental skill in Web3 security and blockchain development.
+Understanding how to **sign and broadcast transactions manually** is a fundamental skill in Web3 security and blockchain development. That's how you can create air gapped set up to avoid using ledger or other paid cold wallet.
 
 ### Goal
 
