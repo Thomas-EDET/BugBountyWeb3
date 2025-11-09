@@ -186,7 +186,7 @@ main();
 
 > After broadcasting, you can view your transaction on Etherscan or a block explorer for your chain using the returned transaction hash. 
 
-You have sucessfully sign and broadcast manually your tx !
+You have sucessfully sign and broadcast manually your tx ! The value has been changed to 5!
 
 <img width="537" height="641" alt="Screenshot from 2025-11-09 20-50-27" src="https://github.com/user-attachments/assets/2db6c36d-158d-4291-93f1-49c01813b28a" />
 
