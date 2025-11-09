@@ -36,6 +36,9 @@ Rabby Wallet provides a user-friendly interface to generate unsigned transaction
 4. Pick a number and click on send transaction.
 5. On rabby wallet, in "Unknown signature type", Click on view  And there you have the unsigned tx.
 
+![Uploading github-raw-tx.png…]()
+
+
 ---
 
 #### Method 2: Using Foundry's `cast` Command
