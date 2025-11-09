@@ -36,7 +36,8 @@ Rabby Wallet provides a user-friendly interface to generate unsigned transaction
 4. Pick a number and click on send transaction.
 5. On rabby wallet, in "Unknown signature type", Click on view  And there you have the unsigned tx.
 
-![Uploading github-raw-tx.png…]()
+<img width="1162" height="786" alt="github-raw-tx" src="https://github.com/user-attachments/assets/fc055e47-cae8-427b-9591-98fa6fc14963" />
+
 
 
 ---
@@ -71,7 +72,7 @@ cast calldata "setValue(uint256)" 5
 #### Understanding the Transaction Object
 
 - **`to`**: The recipient address (contract or EOA)
-- **`data`**: The encoded function call data (in this case, calling a contract function with parameter `3`)
+- **`data`**: The encoded function call data (in this case, calling a contract function with parameter `5`)
 - **`gasLimit`**: Maximum gas units allowed (`0xa734` = 42,804 in decimal)
 - **`gasPrice`**: Price per gas unit (`0x1312e2` = 1,250,018 wei)
 - **`value`**: Amount of ETH to send (`0x0` = 0 ETH)
@@ -178,6 +179,9 @@ Where `0xYOUR_SIGNED_TX_HEX` is your full signed transaction.
 - Paste the signed transaction hex (ensure it starts with `0x` and is complete).
 - Click 'Broadcast'.
 
+<img width="543" height="502" alt="broadcast" src="https://github.com/user-attachments/assets/1b2d5d80-22f4-474e-a1df-33ecf486fb74" />
+
+
 ### 3. With `curl` and JSON-RPC
 ```bash
 curl -X POST https://sepolia.infura.io/v3/YOUR_INFURA_ID \
@@ -206,6 +210,7 @@ main();
 ---
 
 > After broadcasting, you can view your transaction on Etherscan or a block explorer for your chain using the returned transaction hash.
+<img width="537" height="641" alt="Screenshot from 2025-11-09 20-50-27" src="https://github.com/user-attachments/assets/2db6c36d-158d-4291-93f1-49c01813b28a" />
 
 
 
