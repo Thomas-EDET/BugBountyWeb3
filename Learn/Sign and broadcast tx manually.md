@@ -2,17 +2,18 @@
 
 ## Introduction
 
-Understanding how to **sign and broadcast transactions manually** is a fundamental skill in Web3 security and blockchain development. That's how you can create air gapped set up to avoid using ledger or other paid cold wallet.
+Understanding how to **sign and broadcast transactions manually** allows the creation of air-gapped setups, cold storage, or avoiding paid hardware wallets like ledger.
 
-### Goal
+## Goal
 
-The goal of this document is to demonstrate **how to sign a transaction and broadcast it manually** By the end, you'll understand:
+By the end of this guide, you’ll understand:
 
-1. How transactions are structured
-2. The signing process using private keys
-3. How to broadcast signed transactions to the network
+1. How Ethereum transactions are structured
+2. How to sign a transaction using private keys
+3. How to broadcast a signed transaction to the network
 
-#### Tools used
+
+## Tools Used
 
 - [SpotBlock Tools](https://spotblock.org/tools)
 - [SpotBlock Broadcast Sepolia Demo](https://spotblock.org/broadcast-sepolia)
@@ -21,43 +22,39 @@ The goal of this document is to demonstrate **how to sign a transaction and broa
 - [ethers.js library](https://docs.ethers.org/v6/)
 
 
+## 1. Generate an Unsigned Transaction
 
-### 1. Generate an Unsigned Transaction
+You can generate unsigned transactions using web wallets or CLI tools.
 
-Before we can sign and broadcast a transaction, we need to generate the unsigned transaction data. There are multiple ways to do this:
+### A. Using Rabby Wallet (UI)
 
-#### Method 1: Using Rabby Wallet [Visual interface]
-
-Rabby Wallet provides a user-friendly interface to generate unsigned transactions:
-
-1. For contracts that do not have a web application, it's not possible to use rabby wallet.
-2. Use the SpotBlock test contract on Sepolia to generate an unsigned tx.
-3. Connect your wallet
-4. Pick a number and click on send transaction.
-5. On rabby wallet, in "Unknown signature type", Click on view  And there you have the unsigned tx.
+1. If using a contract with no HTML frontend, you can't use the wallet UI.
+2. Use the SpotBlock test contract on Sepolia as an example.
+3. Connect your wallet, choose a number, and click "Send Transaction."
+4. In Rabby Wallet, under “Unknown signature type,” click “View” to see the unsigned transaction.
 
 <img width="1162" height="786" alt="github-raw-tx" src="https://github.com/user-attachments/assets/fc055e47-cae8-427b-9591-98fa6fc14963" />
 
-
-
 ---
 
-#### Method 2: Using Foundry's `cast` Command
+### B. Using Foundry's `cast` (CLI)
 
-If the contract has not web interface, the only way to interact with, is to use specific tools like cast. Most of the mixers are only accessible via this method (no UI).
+For CLI and scripting (common for DeFi/mixer contracts):
 
-Requirements:
-1. Retrieve the value name of the function you want to call.
-2. If the ABI (function) is not provided you need to reverse engineer the ABI, check what a function selector for more info.
-3. SpotBlock contract exposes setValue() and getValue() functions. Check: https://sepolia.etherscan.io/address/0x74CAF34449834F0E0F6823a0a4B700694b5263D2#code
+1. Retrieve the function name (from ABI or reverse engineer).
+2. Use [4byte.directory](https://www.4byte.directory/) if ABI is not accessible.
+3. Example from the SpotBlock contract:
+    - ABI: `setValue(uint256)` and `getValue()`
+    - Etherscan: [Code link](https://sepolia.etherscan.io/address/0x74CAF34449834F0E0F6823a0a4B700694b5263D2#code)
 
-cast calldata will create the hex string we need to insert in our data field in our tx.
+To create the calldata:
 ```bash
 cast calldata "setValue(uint256)" 5
-0x552410770000000000000000000000000000000000000000000000000000000000000005
+# Output:
+# 0x552410770000000000000000000000000000000000000000000000000000000000000005
 ```
 
-
+Unsigned transaction example:
 ```json
 {
   "chainId": 11155111,
@@ -69,57 +66,49 @@ cast calldata "setValue(uint256)" 5
   "to": "0x74CAF34449834F0E0F6823a0a4B700694b5263D2"
 }
 ```
-#### Understanding the Transaction Object
 
-- **`to`**: The recipient address (contract or EOA)
-- **`data`**: The encoded function call data (in this case, calling a contract function with parameter `5`)
-- **`gasLimit`**: Maximum gas units allowed (`0xa734` = 42,804 in decimal)
-- **`gasPrice`**: Price per gas unit (`0x1312e2` = 1,250,018 wei)
-- **`value`**: Amount of ETH to send (`0x0` = 0 ETH)
-- **`nonce`**: Transaction number from sender's address (`0x8` = 8th transaction)
-- **`chainId`**: Network identifier (11155111 = Sepolia testnet)
-- **`type`**: Transaction type (0 = legacy, 2 = EIP-1559)
+**Transaction Object Fields:**
+- `to`: recipient address (contract or EOA)
+- `data`: encoded calldata (function + params)
+- `gasLimit`: max gas allowed (`0xa734` = 42,804)
+- `gasPrice`: cost per gas unit (`0x1312dd`)
+- `value`: amount in ETH (typically `0x0` unless transferring ETH)
+- `nonce`: sender’s tx count (`0x9` is 9th tx)
+- `chainId`: network ID (`11155111` for Sepolia testnet)
+- `type`: `0` (legacy) or `2` (EIP-1559)
 
-
-Get your nonce and gas value via:
-
+**Get Nonce and Gas Values:**
 ```bash
 cast nonce YOUR_ADDRESS --rpc-url https://sepolia.infura.io/v3/YOUR_INFURA_ID
 cast gas-price --rpc-url https://sepolia.infura.io/v3/YOUR_INFURA_ID
 ```
 
-For more check the EIP-155.
+_Read more: [EIP-155](https://eips.ethereum.org/EIPS/eip-155)_
 
 ---
 
-### 2. Sign the Transaction Using Ethers.js
+## 2. Sign the Transaction Using ethers.js
 
-Sadly, we can't sign our unsigned tx using foundry. Therefore, we will use ethers.js, a lib.
+> ⚠️ **Foundry does not currently support direct transaction signing from JSON, so use ethers.js.**
 
-Once you have the unsigned transaction data, the next step is to sign it using a private key. Here's how to do it with ethers.js:
+### Setup
 
-#### Setup
-
-First, install ethers.js if you haven't already:
-
+Install ethers.js:
 ```bash
 npm install ethers
 ```
 
-#### Signing Script
+### Signing Script
 
-Note the field keys need to be modified from rabby wallet because rabby is likely not using ethers.
-ex:gas becomes gasLimit
+**Note:** Some field names need adjustment (e.g., `gas` ➔ `gasLimit`). This is because rabby wallet don't use ethers directly.
 
-Create a file `signTx.js` with the following code:
-
-```javascript
+Create a file `signTx.js`:
+```js
 const { ethers } = require("ethers");
 
-// Define the transaction object
 const tx = {
   to: "0x74CAF34449834F0E0F6823a0a4B700694b5263D2",
-  data: "0x552410770000000000000000000000000000000000000000000000000000000000000009",
+  data: "0x552410770000000000000000000000000000000000000000000000000000000000000005",
   gasLimit: 0xa734,
   gasPrice: 0x1312e2,
   value: 0x0,
@@ -128,11 +117,8 @@ const tx = {
   type: 0, // legacy tx
 };
 
-// Create a wallet instance with your private key
-// Never hardcode private keys in production!
 const wallet = new ethers.Wallet("YOUR_PRIVATE_KEY_HERE");
 
-// Sign the transaction
 wallet.signTransaction(tx).then(signedTx => {
   console.log("Signed Transaction:");
   console.log(signedTx);
@@ -141,46 +127,35 @@ wallet.signTransaction(tx).then(signedTx => {
 });
 ```
 
-#### Run the Script
-
+Run your script:
 ```bash
 node signTx.js
 ```
 
-
-#### Output
-
-The script will output a **signed transaction** in hexadecimal format that looks like:
-
+**Sample output:**
 ```
 0xf8aa088301312e82a73494...your_signed_transaction_hex...
 ```
 
-This signed transaction contains:
-- All the original transaction data
-- The cryptographic signature (v, r, s values)
-- Can be broadcast to the network without further modification
-
----
+The result is a **signed transaction** ready for broadcast.
 
 
-### 3 - Broadcasting
+## 3. Broadcasting
 
-Once you have produced a signed transaction hex (either from Foundry, ethers.js, etc.), you can broadcast (send) it to the network using several approaches:
+Once you have a signed transaction hex, broadcast it with one of the following methods:
 
 ### 1. Using Foundry's `cast publish`
 ```bash
 cast publish 0xYOUR_SIGNED_TX_HEX --rpc-url https://sepolia.infura.io/v3/YOUR_INFURA_ID
 ```
-Where `0xYOUR_SIGNED_TX_HEX` is your full signed transaction.
 
-### 2. Using your Web Broadcast Tool
-- Go to your SpotBlock website's `/tools` page, select the appropriate network.
-- Paste the signed transaction hex (ensure it starts with `0x` and is complete).
+### 2. Using the SpotBlock Web Tool
+
+- Go to your [SpotBlock Tools](https://spotblock.org/tools) page and select the network.
+- Paste the signed tx hex (starts with `0x`).
 - Click 'Broadcast'.
 
 <img width="543" height="502" alt="broadcast" src="https://github.com/user-attachments/assets/1b2d5d80-22f4-474e-a1df-33ecf486fb74" />
-
 
 ### 3. With `curl` and JSON-RPC
 ```bash
@@ -193,7 +168,7 @@ curl -X POST https://sepolia.infura.io/v3/YOUR_INFURA_ID \
     "params": ["0xYOUR_SIGNED_TX_HEX"]
   }'
 ```
-You’ll get a JSON response with the transaction hash if successful.
+You'll get a JSON response with the transaction hash if successful.
 
 ### 4. With `ethers.js` (Node.js)
 ```js
@@ -209,9 +184,12 @@ main();
 
 ---
 
-> After broadcasting, you can view your transaction on Etherscan or a block explorer for your chain using the returned transaction hash.
+> After broadcasting, you can view your transaction on Etherscan or a block explorer for your chain using the returned transaction hash. 
+
+You have sucessfully sign and broadcast manually your tx !
+
 <img width="537" height="641" alt="Screenshot from 2025-11-09 20-50-27" src="https://github.com/user-attachments/assets/2db6c36d-158d-4291-93f1-49c01813b28a" />
 
+---
 
-
-Thanks reading ! Happy hacking.
+Thanks for reading! Happy hacking.
