@@ -28,8 +28,8 @@ You can generate unsigned transactions using web wallets or CLI tools.
 
 ### A. Using Rabby Wallet (UI)
 
-1. If using a contract with no HTML frontend, you can't use the wallet UI.
-2. Use the SpotBlock test contract on Sepolia as an example.
+1. Using this method works only if a frontend exists.
+2. Let's use the SpotBlock frontend that connect the contract. (https://spotblock.org/broadcast-sepolia)
 3. Connect your wallet, choose a number, and click "Send Transaction."
 4. In Rabby Wallet, under “Unknown signature type,” click “View” to see the unsigned transaction.
 
