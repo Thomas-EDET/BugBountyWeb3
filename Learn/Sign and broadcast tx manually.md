@@ -6,15 +6,21 @@ Understanding how to **sign and broadcast transactions manually** is a fundament
 
 ### Goal
 
-The goal of this document is to demonstrate **how to sign a transaction and broadcast it manually** without relying on wallet interfaces or high-level abstractions. By the end, you'll understand:
+The goal of this document is to demonstrate **how to sign a transaction and broadcast it manually** By the end, you'll understand:
 
 1. How transactions are structured
 2. The signing process using private keys
 3. How to broadcast signed transactions to the network
 
----
+#### Tools used
 
-## Tutorial
+- [SpotBlock Tools](https://spotblock.org/tools)
+- [SpotBlock Broadcast Sepolia Demo](https://spotblock.org/broadcast-sepolia)
+- [Foundry Cast (CLI)](https://book.getfoundry.sh/cast/)
+- [Rabby Wallet](https://rabby.io/)
+- [ethers.js library](https://docs.ethers.org/v6/)
+
+
 
 ### 1. Generate an Unsigned Transaction
 
@@ -34,7 +40,7 @@ Rabby Wallet provides a user-friendly interface to generate unsigned transaction
 
 #### Method 2: Using Foundry's `cast` Command
 
-If the contract has not web interface, the only way to interact with it is using specific tools like cast. Most of the mixers are only accessible via this method (no UI).
+If the contract has not web interface, the only way to interact with, is to use specific tools like cast. Most of the mixers are only accessible via this method (no UI).
 
 Requirements:
 1. Retrieve the value name of the function you want to call.
@@ -154,7 +160,7 @@ This signed transaction contains:
 ---
 
 
-## Broadcasting
+### 3 - Broadcasting
 
 Once you have produced a signed transaction hex (either from Foundry, ethers.js, etc.), you can broadcast (send) it to the network using several approaches:
 
@@ -165,7 +171,7 @@ cast publish 0xYOUR_SIGNED_TX_HEX --rpc-url https://sepolia.infura.io/v3/YOUR_IN
 Where `0xYOUR_SIGNED_TX_HEX` is your full signed transaction.
 
 ### 2. Using your Web Broadcast Tool
-- Go to your website's `/tools` page, select the appropriate network.
+- Go to your SpotBlock website's `/tools` page, select the appropriate network.
 - Paste the signed transaction hex (ensure it starts with `0x` and is complete).
 - Click 'Broadcast'.
 
@@ -198,3 +204,6 @@ main();
 
 > After broadcasting, you can view your transaction on Etherscan or a block explorer for your chain using the returned transaction hash.
 
+
+
+Thanks reading ! Happy hacking.
