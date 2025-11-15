@@ -1,0 +1,199 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "slug": "fundamentals",
+      "title": "Ethereum Fundamentals",
+      "icon": "⚙️",
+      "description": "Core concepts, transactions, and cryptography",
+      "color": "#2196F3",
+      "path": "01-Fundamentals",
+      "articles": [
+        {
+          "id": 1,
+          "title": "Sign and Broadcast Transactions",
+          "slug": "sign-broadcast-transactions",
+          "filename": "01-sign-broadcast-transactions.md",
+          "description": "Learn how to manually sign and broadcast Ethereum transactions"
+        },
+        {
+          "id": 2,
+          "title": "ECDSA & Private Key Security",
+          "slug": "ecdsa-private-key-security",
+          "filename": "02-ecdsa-private-key-security.md",
+          "description": "Understanding ECDSA signatures and private key vulnerabilities"
+        },
+        {
+          "id": 3,
+          "title": "Ethereum Events & Logs",
+          "slug": "ethereum-events-logs",
+          "filename": "03-ethereum-events-logs.md",
+          "description": "How Transfer and TransferFrom events work"
+        },
+        {
+          "id": 4,
+          "title": "EIP-1967 Proxy Pattern",
+          "slug": "eip1967-proxy-pattern",
+          "filename": "04-eip1967-proxy-pattern.md",
+          "description": "Understanding upgradable smart contracts with proxy patterns"
+        },
+        {
+          "id": 5,
+          "title": "Gas Station Network (GSN)",
+          "slug": "gas-station-network",
+          "filename": "05-gas-station-network.md",
+          "description": "Meta-transactions and gasless transaction patterns"
+        },
+        {
+          "id": 6,
+          "title": "Smart Contract Interfaces",
+          "slug": "smart-contract-interfaces",
+          "filename": "06-smart-contract-interfaces.md",
+          "description": "How to use interfaces to interact with external contracts"
+        },
+        {
+          "id": 7,
+          "title": "JSON-RPC & Node Providers",
+          "slug": "json-rpc-node-providers",
+          "filename": "07-json-rpc-node-providers.md",
+          "description": "Understanding Ethereum JSON-RPC API and providers like Infura"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "development",
+      "title": "Development & Tooling",
+      "icon": "🛠️",
+      "description": "Solidity, Foundry, testing, and debugging",
+      "color": "#FF9800",
+      "path": "02-Development",
+      "articles": [
+        {
+          "id": 1,
+          "title": "Foundry Arbitrum Forking",
+          "slug": "foundry-arbitrum-forking",
+          "filename": "01-foundry-arbitrum-forking.md",
+          "description": "Troubleshooting Arbitrum mainnet forking with Foundry"
+        },
+        {
+          "id": 2,
+          "title": "Solidity Conventions",
+          "slug": "solidity-conventions",
+          "filename": "02-solidity-conventions.md",
+          "description": "Best practices and naming conventions for Solidity"
+        },
+        {
+          "id": 3,
+          "title": "Solidity Keywords",
+          "slug": "solidity-keywords",
+          "filename": "03-solidity-keywords.md",
+          "description": "Essential Solidity keywords and their usage"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "defi-trading",
+      "title": "DeFi & Trading",
+      "icon": "🏦",
+      "description": "AMMs, DEXs, and DeFi protocols",
+      "color": "#4CAF50",
+      "path": "03-DeFi-Trading",
+      "articles": [
+        {
+          "id": 1,
+          "title": "AMM Constant Product Formula",
+          "slug": "amm-constant-product-formula",
+          "filename": "01-amm-constant-product-formula.md",
+          "description": "Understanding x*y=k and automated market makers"
+        },
+        {
+          "id": 2,
+          "title": "TWAP Price Manipulation",
+          "slug": "twap-price-manipulation",
+          "filename": "02-twap-price-manipulation.md",
+          "description": "Time-weighted average price oracle attacks"
+        },
+        {
+          "id": 3,
+          "title": "Yield Protocol Analysis",
+          "slug": "yield-protocol-analysis",
+          "filename": "03-yield-protocol-analysis.md",
+          "description": "Security analysis of yield farming protocols"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "slug": "security",
+      "title": "Smart Contract Security",
+      "icon": "🔐",
+      "description": "Vulnerabilities and attack vectors",
+      "color": "#F44336",
+      "path": "04-Security",
+      "articles": [
+        {
+          "id": 1,
+          "title": "Delegatecall Storage Collision",
+          "slug": "delegatecall-storage-collision",
+          "filename": "01-delegatecall-storage-collision.md",
+          "description": "Understanding storage slot collisions with delegatecall"
+        },
+        {
+          "id": 2,
+          "title": "Gas Exhaustion Attacks",
+          "slug": "gas-exhaustion-attacks",
+          "filename": "02-gas-exhaustion-attacks.md",
+          "description": "DoS attacks through gas manipulation"
+        },
+        {
+          "id": 3,
+          "title": "Approval Vulnerabilities",
+          "slug": "approval-vulnerabilities",
+          "filename": "03-approval-vulnerabilities.md",
+          "description": "Security issues with ERC20 approve patterns"
+        },
+        {
+          "id": 4,
+          "title": "Transient Storage Vulnerabilities",
+          "slug": "transient-storage-vulnerabilities",
+          "filename": "04-transient-storage-vulnerabilities.md",
+          "description": "Security analysis of transient storage (EIP-1153)"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "slug": "challenges",
+      "title": "Challenges & CTFs",
+      "icon": "🎯",
+      "description": "Practice problems and solutions",
+      "color": "#9C27B0",
+      "path": "05-Challenges",
+      "articles": [
+        {
+          "id": 1,
+          "title": "Ethernaut #22: DEX Solution",
+          "slug": "ethernaut-22-dex-solution",
+          "filename": "01-ethernaut-22-dex-solution.md",
+          "description": "Step-by-step solution for Ethernaut DEX challenge"
+        },
+        {
+          "id": 2,
+          "title": "Quiz: AMM Fundamentals",
+          "slug": "quiz-amm-fundamentals",
+          "filename": "02-quiz-amm-fundamentals.md",
+          "description": "Test your knowledge of automated market makers"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "lastUpdated": "2025-11-15",
+    "totalCategories": 5,
+    "totalArticles": 19
+  }
+}
+
